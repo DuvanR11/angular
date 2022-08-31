@@ -1,0 +1,13 @@
+<div>
+  <form [formGroup]="frmCategoria" (ngSubmit)="agregarCategoria(frmCategoria.value)">
+      <h3>Registro de categorias</h3>
+      <div class="form-grupo">
+          <input type="text" formControlName="txtCategoria" id="txtCategoria">
+      </div>
+      <br>
+      <div class="form-grupo">
+        <input type="submit" value="agregar=" class="btn btn-info">
+    </div>
+  </form>
+  <div>{{mensaje}}</div>
+</div>

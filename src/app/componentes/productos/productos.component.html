@@ -1,0 +1,29 @@
+<div>
+  <form [formGroup]="frmProducto" (ngSubmit)="agregarProducto(frmProducto.value)" enctype="multipart/form-data" class="w-50">
+    <h3 class="text-center">Registro de productos</h3>
+    <div class="form-group">
+      <input type="number" formControlName="txtCodigo" placeholder="Codigo" class="form-control">
+    </div>
+    <div class="form-group">
+      <input type="text" formControlName="txtNombre" placeholder="Nombre" class="form-control">
+    </div>
+    <div class="form-group">
+      <input type="number" formControlName="txtPrecio" placeholder="txtPrecio" class="form-control">
+    </div>
+    <div class="form-group">
+      <select formControlName="cbCategoria" id="cbCategoria" placeholder="Selecione categoria" class="form-control">
+        <option *ngFor="let categoria of listaCategorias" [value]="categoria.id" >{{categoria.catNombre}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <input type="file" formControlName="fileFoto" placeholder="Foto" class="form-control" >
+    </div>
+    <div class="form-group">
+      <input type="submit" value="Agregar" class="btn btn-success" accept=".jpg">
+    </div>
+  </form>
+  <div>
+    <app-tabla></app-tabla>
+  </div>
+</div>
+<div class="text-center">{{mensaje}}</div>

@@ -1,0 +1,50 @@
+<div>
+  <thead>
+    <tr>
+      <td>codigo</td>
+      <td>Nombre</td>
+      <td>Precio</td>
+      <td>Categoria</td>
+      <td>imagen</td>
+      <td>accion</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id="fila" *ngFor="let producto of listaProductos">
+      <td>{{producto.proCodigo}}</td>
+      <td>{{producto.proNombre}}</td>
+      <td>{{producto.proPrecio | currency: 'COP'}}</td>
+      <ng-container *ngFor="let categoria of listaCategorias">
+        <td *ngIf="categoria.id == producto.proCategoria">{{categoria.catNombre}}</td>
+      </ng-container>
+      <td><img src="" alt="" width="50"></td>
+      <td class="text-center">
+          <a href=""><i class="bi bi-wrench-adjustable text-success"></i></a>
+          <i (click)="abrirModalEliminar(producto.id)" class="bi bi-x-octagon text-danger"></i>
+      </td>
+    </tr>
+  </tbody>
+
+  <div class="modal" id="modalEliminar" [ngStyle]="{'display': display}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Encabezado -->
+        <div class="modal-header bg-dark text-white">
+            <h3 class="modal-title">Eliminar producto</h3>
+            <button type="button" class="close" data-dismiss="modal" (click)="cerrarModal()"></button>
+        </div>
+        <!-- Modal Contenido -->
+        <div class="modal-body">
+          ¿Esta seguro de eliminar?
+        </div>
+        <!-- Modal piepagina -->
+        <div class="modal-footer">
+          <a href="">
+            <button type="button" class="btn btn-success" (click)="eliminarProducto()">SI</button>
+          </a>
+          <button type="button" class="btn btn-danger" (click)="cerrarModal()" data-dismiss="modal">NO</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
